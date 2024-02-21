@@ -28,7 +28,11 @@ input {
     font-family: Helvetica, sans-serif;
     font-weight: 500;
     font-size: 19px;
-    padding: 8px 20px;
+    padding: 8px 20px 8px 70px;
+    background-image: url('../../assets/search.png');
+    background-position: 25px 17px;
+    background-repeat: no-repeat;
+    background-size: 25px;
 }
 
 input:focus {

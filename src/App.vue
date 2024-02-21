@@ -35,7 +35,8 @@ h2 {
 h3 {
     font-family: Helvetica, sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 23px;
+    margin: 3px;
 }
 
 body {
