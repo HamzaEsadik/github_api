@@ -1,12 +1,17 @@
 <template>
     <section>
         <input type="text" placeholder="Search User">
-        <button>Submit</button>
+        <button @click="submitButton">Submit</button>
     </section>
 </template>
 
 <script>
     export default {
+        methods: {
+            submitButton() {
+                this.$emit('submit-name')
+            }
+        }
     }
 </script>
 
@@ -58,4 +63,6 @@ button:hover {
 button:active {
     scale: 0.95;
 }
+
+
 </style>

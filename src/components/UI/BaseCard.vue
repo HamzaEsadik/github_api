@@ -1,19 +1,26 @@
 <template>
     <section>
         <div class="profile">
-            <img src="https://avatars.githubusercontent.com/u/132409623?v=4" alt="unaviable">
+            <img :src="avatar_url" alt="unaviable">
         </div>
         <div class="informations">
-            <h3>Name: hamza Esadik</h3>
-            <h3>id: 4564534534</h3>
-            <h3>Public repos: 12</h3>
-            <h3>Created at: 27/03/2021</h3>
+            <h3>Name: {{ name }}</h3>
+            <h3>id: {{ id }}</h3>
+            <h3>Public repos: {{ public_repos }}</h3>
+            <h3>Created at: {{ create_at }}</h3>
         </div>
     </section>
 </template>
 
 <script>
     export default {
+        props: [
+            'name',
+            'id',
+            'public_repos',
+            'create_at',
+            'avatar_url'
+        ]
     }
 </script>
 
@@ -22,7 +29,7 @@ section {
     width: 100%;
     height: 350px;
     border-radius: 20px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, .1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
     margin-bottom: 100px;
     display: flex;
 }

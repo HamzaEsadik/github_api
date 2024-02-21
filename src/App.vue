@@ -3,8 +3,15 @@
     <div class="main">
         <section class="sections">
             <h2>Users</h2>
-            <search-section></search-section>
-            <base-card></base-card>
+            <search-section @submit-name="GettingData"></search-section>
+            <base-card 
+            v-if="user" 
+            :name="name"
+            :id="id"
+            :public_repos="public_repos"
+            :create_at="create_at"
+            :avatar_url="avatar_url">
+            </base-card>
         </section>
     </div>
 
@@ -13,10 +20,41 @@
 <script>
 import TheHeader from './components/UI/TheHeader.vue'
 import SearchSection from './components/UI/SearchSection.vue'
+
 export default {
     components: {
         TheHeader,
         SearchSection
+    },
+    data() {
+        return {
+            'apiUrl': 'https://api.github.com/users/',
+            'name': '',
+            'id': '',
+            'public_repos': '',
+            'create_at': '',
+            'avatar_url': '',
+            'user': false
+        }
+    },
+    methods: {
+        GettingData() {
+            fetch(this.apiUrl + this.name)
+            .then (response => {
+                if (!response.ok) {
+                    this.user = false;
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.user = true;
+                this.name = data.name;
+                this.id = data.id;
+                this.public_repos = data.public_repos;
+                this.create_at = data.created_at;
+                this.avatar_url = data.avatar_url;
+            });
+        }
     }
 }
 </script>
@@ -30,13 +68,6 @@ h2 {
     font-weight: 700;
     font-size: 40px;
     margin-bottom: 30px;
-}
-
-h3 {
-    font-family: Helvetica, sans-serif;
-    font-weight: 500;
-    font-size: 23px;
-    margin: 3px;
 }
 
 body {
