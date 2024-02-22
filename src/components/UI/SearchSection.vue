@@ -1,15 +1,20 @@
 <template>
     <section>
-        <input type="text" placeholder="Search User">
+        <input type="text" placeholder="Search User" v-model="user_input">
         <button @click="submitButton">Submit</button>
     </section>
 </template>
 
 <script>
     export default {
+        date() {
+            return {
+                'user_input': ''
+            }
+        },
         methods: {
             submitButton() {
-                this.$emit('submit-name')
+                this.$emit('submit-name', this.user_input);
             }
         }
     }
@@ -18,7 +23,7 @@
 <style scoped>
 
 section {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     padding: 0;
     height: 60px;
 }
